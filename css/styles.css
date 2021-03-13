@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --orange: #ef6848;
+  --black: #000000;
+  --darkGray: #313131;
+  --white: #ffffff;
+  --lightOrange: #ff9c51;
+  --yellowOrange: #ffb650;
+
+  /* To Use Variables Do This : var(--white) */
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  background-color: var(--black);
+  background-size: 100vw 100vh;
+  background-image: url("../images/bg\ stars.jpg");
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+main {
+  overflow-y: scroll;
+  max-height: 100vh;
+  scroll-snap-type: mandatory;
+  scroll-snap-points-y: repeat(100vh);
+  scroll-snap-type: y mandatory;
+}
+
+.EarthPanel {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
