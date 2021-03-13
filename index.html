@@ -50,13 +50,12 @@
     var open = 0;
     const chatbotScreen = document.getElementById('chatbotScreen');
     function chatOpen() {
-      console.log(open);
       if (open == 0) {
-        chatbotScreen.style.display = 'block';
+        chatbotScreen.style.display = "block";
         open = 1;
       }
-      if (open == 1) {
-        chatbotScreen.style.display = 'none';
+      else if (open == 1) {
+        chatbotScreen.style.display = "none";
         open = 0;
       }
 
