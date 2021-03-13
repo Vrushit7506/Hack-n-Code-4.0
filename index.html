@@ -8,6 +8,8 @@
   <title>Climate Change</title>
 
   <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/navPage.css">
+
 </head>
 
 <body>
@@ -19,7 +21,15 @@
   <button class="chatbot" onclick="chatOpen()">
   </button>
 
-  <header></header>
+  <header>
+    <span class="hamburger"><span></span></span>
+  </header>
+
+  <!-- <div class="navBody">
+
+
+
+  </div> -->
   <main>
     <div class="EarthPanel">
       <img src="/images/Evolution/Evolution1.png" alt="">
@@ -133,7 +143,13 @@
       }
 
     }
+
+
+    setTimeout(function () {
+      const chatCompany = document.getElementsByClassName('b-agent-demo_powered_by');
+    }, 3000);
   </script>
+
 
 </body>
 

@@ -75,3 +75,57 @@ main {
   color: var(--white);
   margin: 0 0 5px;
 }
+
+.hamburger {
+  display: block;
+  height: 20px;
+  margin: -10px 0 0;
+  position: fixed;
+  right: 5%;
+  top: 48px;
+  width: 40px;
+  z-index: 901;
+  cursor: pointer;
+}
+
+.hamburger span {
+  background: linear-gradient(45deg, #f45d1f 0, #ed4966 100%);
+  border-radius: 2px;
+  height: 4px;
+  position: absolute;
+  width: 40px;
+  display: block;
+  content: "";
+  background-clip: padding-box;
+  top: 8px;
+}
+
+header .hamburger span:before {
+  background: linear-gradient(45deg, #f45d1f 0, #ed4966 100%);
+  background-clip: padding-box;
+  top: -8px;
+}
+
+header .hamburger span,
+header .hamburger span:after,
+header .hamburger span:before {
+  border-radius: 2px;
+  height: 4px;
+  position: absolute;
+  width: 40px;
+  display: block;
+  content: "";
+}
+
+header .hamburger span:after {
+  background-image: -moz-linear-gradient(left, #f45d1f 0, #ed4966 100%);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    from(#f45d1f),
+    to(#ed4966)
+  );
+  background-clip: padding-box;
+  bottom: -8px;
+}
