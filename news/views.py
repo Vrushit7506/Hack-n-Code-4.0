@@ -6,7 +6,7 @@ from django.http import JsonResponse
 
 # Create your views here.
 def home(request):
-    news = NewsApiClient(api_key = '1a04cf5f282d49f18febc30f7cd22ddc')
+    news = NewsApiClient(api_key = '4df4877345ba4b0086fe1570c1e486a1')
     all_climate_headlines = news.get_everything(q='climate change')
     climate_headlines_cnn = news.get_everything(q='climate change',sources = 'CNN')
     climate_headlines_bbc = news.get_everything(q='climate change',sources = 'BBC-News')
@@ -22,11 +22,30 @@ def home(request):
         'articles_fn':climate_headlines_fn['articles'][:4],
         'articles_toi':climate_headlines_toi['articles'][:4],
     }
+    allsources = [
 
-    return render(request,'news/news.html',{'articles':articles})
+        {'name':'CNN','id':'cnn'},
+        {'name':'BBC News','id':'bbc-news'},
+        {'name':'Fox News','id':'fox-news'},
+        {'name':'Independent','id':'independent'},
+        {'name':'The Times Of India','id':'the-times-of-india'
+
+        }]
+
+    return render(request,'news/news1.01.html',{'all_articles':articles,'allsources':allsources})
 
 def eachsource(request,source):
-    news = NewsApiClient(api_key = '1a04cf5f282d49f18febc30f7cd22ddc')
+    news = NewsApiClient(api_key = '4df4877345ba4b0086fe1570c1e486a1')
     each_climate_headlines = news.get_everything(q='climate change',sources=source)
     # return JsonResponse(each_climate_headlines['articles'],safe=False)
-    return render(request,'news/news_each.html',{'articles':each_climate_headlines['articles']})
+
+    allsources = [
+
+        {'name':'CNN','id':'cnn'},
+        {'name':'BBC News','id':'bbc-news'},
+        {'name':'Fox News','id':'fox-news'},
+        {'name':'Independent','id':'independent'},
+        {'name':'The Times Of India','id':'the-times-of-india'}
+        
+        ]
+    return render(request,'news/news_each.html',{'articles':each_climate_headlines['articles'],'allsources':allsources})

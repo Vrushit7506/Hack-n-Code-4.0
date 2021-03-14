@@ -1,19 +1,381 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<!-- Mirrored from preview.colorlib.com/theme/webhostingservice/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 Mar 2021 07:02:08 GMT -->
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Grow Green</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css"
+    integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="{% static 'css/indexStyling/styles.css' %}">
 </head>
-<body>
-    {% for article in articles %}
-    <h1>By : {{article.source.name}}</h1>
-    <a target="_blank" href='{{article.url}}'><h4>{{article.title}}</h4></a>
-    <p>
-        <img src='{{article.urlToImage}}'>
-       {{article.desc}}
-    </p>
-    {% endfor %}
+
+<body onload='monthsFix()'>
+
+  <div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+      <div class="preloader-inner position-relative">
+        <div class="preloader-circle"></div>
+        <div class="preloader-img pere-text">
+          <img src="assets/img/logo/loder.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header>
+
+    <div class="header-area header-transparent">
+      <div class="main-header">
+        <div class="header-bottom  header-sticky">
+          <div class="container-fluid">
+            <div class="row align-items-center">
+
+              <div class="col-xl-2 col-lg-1 col-md-1">
+                <div class="logo">
+                  <a href="index-2.html"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                </div>
+              </div>
+              <div class="col-xl-8 col-lg-8 col-md-8">
+
+                <div class="main-menu f-right d-none d-lg-block">
+                  <nav>
+                    <ul id="navigation">
+                      <li><a href="index-2.html">Home</a></li>
+                      <li><a href="about.html">About</a></li>
+                      <li><a href="services.html">Services</a></li>
+                      <li><a href="blog.html">Blog</a>
+                        <ul class="submenu">
+                          <li><a href="blog.html">Blog</a></li>
+                          <li><a href="blog_details.html">Blog Details</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#">Pages</a>
+                        <ul class="submenu">
+                          <li><a href="elements.html">Element</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="col-xl-2 col-lg-3 col-md-3">
+                <div class="header-right-btn f-right d-none d-lg-block">
+                  <a href="#" class="btn header-btn">
+                    THE HUMAN ASTEROID.
+                  </a>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="mobile_menu d-block d-lg-none"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </header>
+  <main>
+
+
+    <section class="blog_area section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mb-5 mb-lg-0">
+            <div class="blog_left_sidebar">
+              
+                {% for article in articles %}
+                    <article class="blog_item">
+                      <div class="blog_item_img">
+                        <img class="card-img rounded-0" src="{{article.urlToImage}}" alt="">
+                        <a href="#" class="blog_item_date">
+                            {% with month=article.publishedAt|slice:"5:7" %}
+                            {% with date=article.publishedAt|slice:"8:10" %}
+                            {% if date is '' %}
+                            <h3>15</h3>
+                            {% else %}
+                              <h3>{{date}}</h3>
+                              {% endif %}
+                              <p class="month">{{month}}</p>
+                            {% endwith %}
+                          {% endwith %}
+                        </a>
+                      </div>
+                      <div class="blog_details">
+                        <a class="d-inline-block" href="{{article.url}}">
+                          <h2>{{article.title}}</h2>
+                        </a>
+                        <p>{{article.description}}</p>
+                        <ul class="blog-info-link">
+                          <li><a href="#"> {{article.source.name}}</a></li>
+                          {% if article.author is not None %}
+                          <li><a href="#"><i class="fa fa-user"></i>{{article.author}}</a></li>
+                          {% endif %}
+                        </ul>
+                      </div>
+                    </article>
+                {% endfor %}
+              <!--<article class="blog_item">
+                <div class="blog_item_img">
+                  <img class="card-img rounded-0" src="assets/img/blog/single_blog_2.png" alt="">
+                  <a href="#" class="blog_item_date">
+                    <h3>15</h3>
+                    <p>Jan</p>
+                  </a>
+                </div>
+                <div class="blog_details">
+                  <a class="d-inline-block" href="blog_details.html">
+                    <h2>Google inks pact for new 35-storey office</h2>
+                  </a>
+                  <p>That dominion stars lights dominion divide years for fourth have don't stars is that
+                    he earth it first without heaven in place seed it second morning saying.</p>
+                  <ul class="blog-info-link">
+                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                    <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                  </ul>
+                </div>
+              </article>
+               <article class="blog_item">
+                <div class="blog_item_img">
+                  <img class="card-img rounded-0" src="assets/img/blog/single_blog_3.png" alt="">
+                  <a href="#" class="blog_item_date">
+                    <h3>15</h3>
+                    <p>Jan</p>
+                  </a>
+                </div>
+                <div class="blog_details">
+                  <a class="d-inline-block" href="blog_details.html">
+                    <h2>Google inks pact for new 35-storey office</h2>
+                  </a>
+                  <p>That dominion stars lights dominion divide years for fourth have don't stars is that
+                    he earth it first without heaven in place seed it second morning saying.</p>
+                  <ul class="blog-info-link">
+                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                    <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                  </ul>
+                </div>
+              </article>
+              <article class="blog_item">
+                <div class="blog_item_img">
+                  <img class="card-img rounded-0" src="assets/img/blog/single_blog_4.png" alt="">
+                  <a href="#" class="blog_item_date">
+                    <h3>15</h3>
+                    <p>Jan</p>
+                  </a>
+                </div>
+                <div class="blog_details">
+                  <a class="d-inline-block" href="blog_details.html">
+                    <h2>Google inks pact for new 35-storey office</h2>
+                  </a>
+                  <p>That dominion stars lights dominion divide years for fourth have don't stars is that
+                    he earth it first without heaven in place seed it second morning saying.</p>
+                  <ul class="blog-info-link">
+                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                    <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                  </ul>
+                </div>
+              </article>
+              <article class="blog_item">
+                <div class="blog_item_img">
+                  <img class="card-img rounded-0" src="assets/img/blog/single_blog_5.png" alt="">
+                  <a href="#" class="blog_item_date">
+                    <h3>15</h3>
+                    <p>Jan</p>
+                  </a>
+                </div>
+                <div class="blog_details">
+                  <a class="d-inline-block" href="blog_details.html">
+                    <h2>Google inks pact for new 35-storey office</h2>
+                  </a>
+                  <p>That dominion stars lights dominion divide years for fourth have don't stars is that
+                    he earth it first without heaven in place seed it second morning saying.</p>
+                  <ul class="blog-info-link">
+                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                    <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                  </ul>
+                </div>
+              </article> -->
+
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="blog_right_sidebar">
+              <!-- <aside class="single_sidebar_widget search_widget">
+                <form action="#">
+                  <div class="form-group">
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" placeholder='Search Keyword'
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                      <div class="input-group-append">
+                        <button class="btns" type="button"><i class="ti-search"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                    type="submit">Search</button>
+                </form>
+              </aside> -->
+              <aside class="single_sidebar_widget post_category_widget">
+                <h4 class="widget_title">More Articles</h4>
+                <ul class="list cat-list">
+                  {% for source in allsources %}
+                    <li>
+                      
+                      <a href="{% url 'news:each-view' source.id %}" class="d-flex">
+                        <p>{{source.name}}</p>
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <footer>
+
+    <div class="footer-area">
+      <div class="container">
+        <div class="footer-top footer-padding">
+          <div class="row justify-content-between">
+            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+              <div class="single-footer-caption mb-50">
+                <div class="single-footer-caption mb-30">
+
+                  <div class="footer-logo">
+                    <a href="index-2.html"><img src="images/index/logo2_footer.png" alt=""></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
+              <div class="single-footer-caption mb-50">
+                <div class="footer-tittle">
+                  <h4>All packages</h4>
+                  <ul>
+                    <li><a href="#">Package-1</a></li>
+                    <li><a href="#">Package-2</a></li>
+                    <li><a href="#">Package-3</a></li>
+                    <li><a href="#">Custome</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+              <div class="single-footer-caption mb-50">
+                <div class="footer-tittle">
+                  <h4>Quick Link</h4>
+                  <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">News & Articles</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+              <div class="single-footer-caption mb-50">
+                <div class="footer-tittle">
+                  <h4>+1 514 648 256</h4>
+                  <ul>
+                    <li><a href="#"><span class="__cf_email__"
+                          data-cfemail="047d6b71766169656d68446369656d682a676b69">[email&#160;protected]</span></a></li>
+                  </ul>
+                  <p>123 East 26th Street, Fifth Floor, New York, NY 10011</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="row d-flex justify-content-between align-items-center">
+            <div class="col-xl-9 col-lg-9 ">
+              <div class="footer-copy-right">
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3">
+
+              <div class="footer-social f-right">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fas fa-globe"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <div id="back-top">
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <script src="{% static 'js/main.js/' %}"></script>
+
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+  </script> -->
 </body>
+
+<!-- Mirrored from preview.colorlib.com/theme/webhostingservice/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 Mar 2021 07:02:16 GMT -->
+
 </html>
+<script>
+    function monthsFix()
+  {
+    months = {
+      '01':'Jan',
+      '02':'Feb',
+      '03':'Mar',
+      '04':'Apr',
+      '05':'May',
+      '06':'Jun',
+      '07':'Jul',
+      '08':'Aug',
+      '09':'Sep',
+      '10':'Oct',
+      '11':'Nov',
+      '12':'Dec'
+    }
+
+    var monthTags = document.getElementsByClassName('month');
+    for(var i=0;i<monthTags.length;i++)
+    {
+      monthTags[i].innerHTML = months[monthTags[i].innerHTML];
+    }
+  }
+</script>
