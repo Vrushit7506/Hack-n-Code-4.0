@@ -2474,7 +2474,6 @@ hr {
   }
 }
 .slider-bg {
-  background: #020230;
 }
 .dot-style .slick-dots {
   text-align: right;
@@ -2535,7 +2534,7 @@ hr {
 }
 .slider-height {
   min-height: 700px;
-  padding-top: 220px;
+  padding-top: 95px;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -2585,10 +2584,10 @@ hr {
 .services-area::before {
 }
 .services-area .services-wrapper {
-  background: #fff;
+  background: transparent;
 }
 .services-area .services-wrapper .single-services {
-  padding: 94px 57px 30px 65px;
+  padding: 40px 57px 30px 65px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .services-area .services-wrapper .single-services {
@@ -2617,7 +2616,7 @@ hr {
   transition: all 0.4s ease-out 0s;
 }
 .services-area .services-wrapper .single-services .services-cap h3 > a {
-  color: #28395a;
+  color: wheat;
   font-size: 30px;
   font-weight: 600;
   line-height: 1.5;
@@ -2873,7 +2872,7 @@ form.search-box .search-form a {
   margin: 0 15px;
 }
 .domain-list .single-domain {
-  width: 16%;
+  width: 23%;
   padding-left: 25px;
   position: relative;
 }
@@ -2913,15 +2912,7 @@ form.search-box .search-form a {
 .domain-list .single-domain:nth-child(n + 5) {
   color: #f074ff;
 }
-.domain-list .single-domain::before {
-  position: absolute;
-  content: "";
-  width: 1px;
-  height: 74px;
-  right: 0;
-  top: -10px;
-  background: #032a57;
-}
+
 .domain-list .single-domain:last-child::before {
   display: none;
 }
@@ -5929,7 +5920,7 @@ del {
 }
 
 .homePage {
-  height: 600px;
+  height: 630px;
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -5956,7 +5947,7 @@ del {
   position: absolute;
   right: 100px;
   width: 700px;
-  top: 100px;
+  top: 210px;
 }
 
 .homePage .content h1 {
@@ -6027,4 +6018,20 @@ del {
 .homePage .content a:hover {
   background: #ed4966;
   border: 1px solid #ed4966 !important;
+}
+
+.single-domain {
+  color: black !important;
+}
+
+.single-domain span {
+  color: white !important;
+  font-weight: 900 !important;
+  font-size: 2rem;
+}
+
+.single-domain p {
+  color: black !important;
+  font-weight: 700 !important;
+  font-size: 1.5rem;
 }
